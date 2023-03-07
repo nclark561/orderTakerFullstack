@@ -14,6 +14,10 @@ const editDrink = document.querySelector('#edit-drink');
 const editRadio = document.getElementsByName('edit-togo');
 const editPickup = document.querySelector('#edit-pickup');
 let allOrders = [];
+let currId = 1;
+const orderContainer = document.querySelector('#house-container');
+
+
 
 const radioBtnVal = () => {
     for (let i = 0; i < radioIn.length; i++) {
@@ -40,23 +44,38 @@ class Order {
         this.drink = drink;
         this.togo = togo;
         this.pickup = pickup;
-        this.id = Math.floor(Math.random() * 1000);
+        this.id = currId;
     }
 }
 
 
 const addOrder = evt => {
     evt.preventDefault();
+    let orderCard = document.createElement('div');
+    orderCard.classList.add('order-card');
+   
 
     let radioVal = radioBtnVal();
 
     let guestOrder = new Order(nameInput.value, entreeIn.value, sideIn.value, drinkIn.value, radioVal, pickupIn.value)
+
+    orderCard.setAttribute('id', guestOrder.id);
     
+    orderCard.innerHTML = `<p>Order Number: ${guestOrder.id}</p>
+    <p>Name: ${guestOrder.name}</p>
+    <p>${guestOrder.entree} with ${guestOrder.side}</p>
+    <p>${guestOrder.drink}</p>
+    <p>${guestOrder.togo}</p>
+    <p>Ready by: ${guestOrder.pickup}</p>
+    `;
+
     axios.post('http://localhost:9001/order', guestOrder).then((res) => {
         alert(`Order submitted. Your order number is ${guestOrder.id}`);
         console.log(res.data);
         allOrders = res.data;
     }).catch(() => console.log('issue with add order function'));
+
+    currId++;
 
     nameInput.value = '';
     entreeIn.value = '';
@@ -64,6 +83,8 @@ const addOrder = evt => {
     drinkIn.value = 'mtn-dew';
 
     pickupIn.value = '8';
+
+    document.querySelector('#order-container').appendChild(orderCard);
 };
 
 const editOrder = evt => {
@@ -84,6 +105,17 @@ const editOrder = evt => {
             allOrders = res.data;
             }).catch((err) => console.log(err));
             console.log(allOrders);
+            
+            let orderCard = document.getElementById(`${allOrders[i].id}`)
+
+            orderCard.innerHTML = `<p>Order Number: ${guestOrder.id}</p>
+            <p>Name: ${guestOrder.name}</p>
+            <p>${guestOrder.entree} with ${guestOrder.side}</p>
+            <p>${guestOrder.drink}</p>
+            <p>${guestOrder.togo}</p>
+            <p>Ready by: ${guestOrder.pickup}</p>
+            `;
+
             break;
         }
     }
@@ -97,3 +129,4 @@ const editOrder = evt => {
 
 form.addEventListener('submit', addOrder);
 editForm.addEventListener('submit', editOrder);
+

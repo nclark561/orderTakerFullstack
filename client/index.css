@@ -40,13 +40,20 @@ footer {
     border-radius: 10px;
     margin: 30px;
 }
-#foot{
-    height: 200px;
-}
-ul {
+#order-container{
     display: flex;
     flex-direction: row;
 }
+
 #bod {
     display: flex;
+}
+.order-card {
+    color:white;
+    font-family: 'Gloria Hallelujah', cursive;
+    margin: 10px;
+    padding: 10px;
+    border-style: solid;
+    border-radius: 15px;
+    border-color: white;
 }
