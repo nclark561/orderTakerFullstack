@@ -12,6 +12,8 @@ form {
         width: 25%;
         background-color: #4f4f4f;
         border-radius: 10px;
+        margin: 0 30px 0 30px;
+        width: 300px;
 }
 
 form > *{
@@ -22,8 +24,29 @@ form > *{
 h1 {
     text-align: center;
     font-family: 'Gloria Hallelujah', cursive;
-    font-size: 50px;
-    background-color: #4f4f4f;
+    font-size: 50px;  
     color: rgb(211, 7, 7);
+}
+#intro {
+    background-color: #4f4f4f;
     border-radius: 10px;
+}
+footer {
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    background-color: #4f4f4f;
+    border-radius: 10px;
+    margin: 30px;
+}
+#foot{
+    height: 200px;
+}
+ul {
+    display: flex;
+    flex-direction: row;
+}
+#bod {
+    display: flex;
 }

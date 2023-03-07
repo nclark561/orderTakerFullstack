@@ -11,31 +11,68 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Welcome to Good Burger, home of the Good Burger, can I take your order?</h1>
-    <form id="menu-form">
-        <input id="nameInput" placeholder="name">
-        <input id="entreeInput" placeholder="entree">
-        <input id="sideInput" placeholder="side">
-        <select id="drinkInput">
-            <option value="mtn-dew">Mtn Dew</option>
-            <option value="choc-milk">Choccy Milk</option>
-            <option value="coke">Coca-Cola</option>
-            <option value="water">Water</option>
-            <option value="beer">Beer</option>
-        </select>
-        <div>
-            <input type="radio" name="togo" value="for-here">
-            <label>For here</label>
-            <input type="radio" name="togo" value="to-go">
-            <label>To go</label>
+    <h1 id="intro">Welcome to Good Burger, home of the Good Burger, can I take your order?</h1>
+    <div id="bod">
+        <form id="menu-form">
+            <h1>Place Order</h1>
+            <input id="nameInput" placeholder="name">
+            <input id="entreeInput" placeholder="entree">
+            <input id="sideInput" placeholder="side">
+            <select id="drinkInput">
+                <option value="mtn-dew">Mtn Dew</option>
+                <option value="choc-milk">Choccy Milk</option>
+                <option value="coke">Coca-Cola</option>
+                <option value="water">Water</option>
+                <option value="beer">Beer</option>
+            </select>
+            <div>
+                <input type="radio" name="togo" value="for-here">
+                <label>For here</label>
+                <input type="radio" name="togo" value="to-go">
+                <label>To go</label>
+            </div>
+            <select id="pickupInput">
+                <option value="8">8pm</option>
+                <option value="9">9pm</option>
+                <option value="10">10pm</option>
+            </select>
+            <input class="submit" type="submit">
+        </form>
+        <form id="order-edit">
+            <h1>Edit Order</h1>
+            <input id="order-id" placeholder="Order id">
+            <input id="edit-name" placeholder="name">
+            <input id="edit-entree" placeholder="entree">
+            <input id="edit-side" placeholder="side">
+            <select id="edit-drink">
+                <option value="mtn-dew">Mtn Dew</option>
+                <option value="choc-milk">Choccy Milk</option>
+                <option value="coke">Coca-Cola</option>
+                <option value="water">Water</option>
+                <option value="beer">Beer</option>
+            </select>
+            <div>
+                <input type="radio" name="edit-togo" value="for-here">
+                <label>For here</label>
+                <input type="radio" name="edit-togo" value="to-go">
+                <label>To go</label>
+            </div>
+            <select id="edit-pickup">
+                <option value="8">8pm</option>
+                <option value="9">9pm</option>
+                <option value="10">10pm</option>
+            </select>
+            <input class="submit" type="submit">
+        </form>
+    </div>
+    <footer>
+        <h1>Current Orders</h1>
+        <div id="foot">
+            <ul>
+
+            </ul>
         </div>
-        <select id="pickupInput">
-            <option value="8">8pm</option>
-            <option value="9">9pm</option>
-            <option value="10">10pm</option>
-        </select>
-        <input id="submit" type="submit">
-    </form>
+    </footer>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="index.js"></script>
 </body>
