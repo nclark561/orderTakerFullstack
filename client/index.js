@@ -3,8 +3,16 @@ const nameInput = document.querySelector('#nameInput');
 const entreeIn = document.querySelector('#entreeInput');
 const sideIn = document.querySelector('#sideInput');
 const drinkIn = document.querySelector('#drinkInput');
-// const radioIn = document.querySelector('');
+const radioIn = document.getElementsByName('togo');
 const pickupIn = document.querySelector('#pickupInput');
+
+const radioBtnVal = () => {
+    for (let i = 0; i < radioIn.length; i++) {
+        if (radioIn[i].checked) {
+            return radioIn[i].value;
+        }
+    }
+}
 
 class Order {
     constructor(name, entree, side, drink, togo, pickup) {
@@ -22,10 +30,13 @@ class Order {
 const addOrder = evt => {
     evt.preventDefault();
 
-    new Order(nameInput.value, entreeIn.value, sideIn.value, drinkIn.value, radioIn.value, pickupIn.value)
-    alert(`Your order is number ${.id}`);
+    let radioVal = radioBtnVal();
 
-    axios.post('/')
+    let guestOrder = new Order(nameInput.value, entreeIn.value, sideIn.value, drinkIn.value, radioVal, pickupIn.value)
+    
+    axios.post('http://localhost:9001/order', guestOrder).then((res) => {
+        alert(`Order submitted. Your order number is ${guestOrder.id}`);
+    }).catch(() => console.log('issue with add order function'));
 
     nameInput.value = '';
     entreeIn.value = '';

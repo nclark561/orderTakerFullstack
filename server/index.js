@@ -8,4 +8,10 @@ app.use(cors());
 
 let allOrders = [];
 
-app.post('//')
+app.post('/order', (req, res) => {
+    allOrders.push(req.body);
+    res.status(200).send('Order successfully recieved.');
+    console.log(allOrders);
+})
+
+app.listen(9001, () => console.log('server running on port 9001'));
